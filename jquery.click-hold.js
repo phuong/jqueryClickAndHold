@@ -1,5 +1,5 @@
 /*
- * jQuery click-and-hold plugin 1.0.0
+ * jQuery click-and-hold plugin 1.0.1
  * https://github.com/phuong/jqueryClickAndHold
  *
  * Licensed under the MIT license:
@@ -11,10 +11,10 @@
     var pluginName = "clickAndHold",
         defaults = {
             timeout: 200,
-            onHold: function (element, event) {
+            onHold: function (event, times) {
                 // Fire on hold element
             },
-            onRelease: function (element, event) {
+            onRelease: function (event) {
                 // Fire once element is released
             }
         };
@@ -29,6 +29,7 @@
         this.mouseStillDown = false;
         this.options = $.extend({}, defaults, options);
         this.interval = null;
+        this.indicator = 0;
         this.init();
     }
 
@@ -46,9 +47,10 @@
         }).mouseup(function (e) {
             // Restore state
             self.mouseStillDown = false;
-            self.options.onRelease(this, e);
+            self.options.onRelease.call(this, e);
             clearInterval(self.interval);
             self.options.timeout = self.initialTimeout;
+            self.indicator = 0;
         });
     };
 
@@ -63,7 +65,8 @@
         if (!self.mouseStillDown) {
             return;
         }
-        options.onHold(this.element, this.event);
+        self.indicator++;
+        options.onHold.call(self.element, self.event, self.indicator);
         if (self.mouseStillDown) {
             // Call onHold faster and faster
             if (options.timeout > 10) {
@@ -85,4 +88,3 @@
     };
 
 })(jQuery, window, document);
-
