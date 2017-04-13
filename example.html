@@ -1,0 +1,27 @@
+<html>
+<head>
+    <title>Demo</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="jquery.click-hold.js"></script>
+    <script>
+        $(document).ready(function () {
+            var $status = $("#status"), text;
+            $("#button-1").clickAndHold({
+                onHold: function (e, n) {
+                    text = ' Bam' + n;
+                    $status.append(text);
+                },
+                onRelease: function () {
+                    $status.text('Reloaded!');
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <button id="button-1">Fire!</button>
+        <div id="status"></div>
+    </div>
+</body>
+</html>

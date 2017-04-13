@@ -1,0 +1,15 @@
+{
+  "name": "clickAndHold",
+  "description": "Fire event during mousedown event.",
+  "version": "1.0.1",
+  "main": "./jquery.click-hold.js",
+  "author": {
+      "name": "Phuong",
+      "url": "http://phuong.github.io"
+  },
+  "dependencies": {
+    "jquery": ">=1.7"
+  },
+  "keywords": ["button", "mousedown", "click and hold"],
+  "homepage": "https://github.com/phuong/jqueryClickAndHold"
+}
