@@ -1,5 +1,5 @@
 # jqueryClickAndHold
-Capture mousedown and hold, fire event during hold event
+Capture mousedown and hold, fire event during hold event. [Demo](https://phuong.github.io/jqueryClickAndHold/)
 
 # Usage
 
